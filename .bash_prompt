@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Sexy bash prompt by Amerzel
+# Sexier bash prompt by Amerzel
 # https://github.com/Amerzel/sexy-bash-prompt
 # Forked from https://github.com/twolfson/sexy-bash-prompt
 
@@ -193,7 +193,7 @@ function get_prompt_symbol() {
   fi
 }
 
-# Define the sexy-bash-prompt
+# Define the sexier-bash-prompt
 PS1="\[${BOLD}${USER_COLOR}\]\u \
 \[$PREPOSITION_COLOR\]at \
 \[$DEVICE_COLOR\]\h \
