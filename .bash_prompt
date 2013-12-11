@@ -17,6 +17,7 @@ if tput setaf 1 &> /dev/null; then
 
   # If the terminal supports at least 256 colors, write out our 256 color based set
   if [[ $(tput colors) -ge 256 ]] &> /dev/null; then
+    ROOT_USER_COLOR=$(tput setaf 1)    # RED
     USER_COLOR=$(tput setaf 27)        # BLUE
     PREPOSITION_COLOR=$(tput setaf 7)  # WHITE
     DEVICE_COLOR=$(tput setaf 39)      # CYAN
@@ -24,6 +25,7 @@ if tput setaf 1 &> /dev/null; then
     GIT_STATUS_COLOR=$(tput setaf 154) # YELLOW
   else
   # Otherwise, use colors from our set of 8
+    ROOT_USER_COLOR=$(tput setaf 1)    # RED
     USER_COLOR=$(tput setaf 4)         # BLUE
     PREPOSITION_COLOR=$(tput setaf 7)  # WHITE
     DEVICE_COLOR=$(tput setaf 6)       # CYAN
@@ -42,7 +44,7 @@ else
   #   echo -n -e "\033[1;${i}mText$(tput sgr0) "
   #   echo "\033[1;${i}m"
   # done
-
+  ROOT_USER_COLOR="\033[1;31m"   # RED
   USER_COLOR="\033[1;34m"        # BLUE
   PREPOSITION_COLOR="\033[1;37m" # WHITE
   DEVICE_COLOR="\033[1;36m"      # CYAN
@@ -91,8 +93,18 @@ function get_prompt_symbol() {
   fi
 }
 
+# Dynamic USER_COLOR
+function get_user_color() {
+  # If we are root, display ROOT_USER_COLOR. Otherwise, USER_COLOR
+  if [[ $UID == 0 ]]; then
+    echo $ROOT_USER_COLOR
+  else
+    echo $USER_COLOR
+  fi
+}
+
 # Define the sexier-bash-prompt
-PS1="\[${BOLD}${USER_COLOR}\]\u \
+PS1="\[${BOLD}$(get_user_color)\]\u \
 \[$PREPOSITION_COLOR\]at \
 \[$DEVICE_COLOR\]\h \
 \[$PREPOSITION_COLOR\]in \
