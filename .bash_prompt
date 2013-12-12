@@ -17,7 +17,7 @@ if tput setaf 1 &> /dev/null; then
 
   # If the terminal supports at least 256 colors, write out our 256 color based set
   if [[ $(tput colors) -ge 256 ]] &> /dev/null; then
-    ROOT_USER_COLOR=$(tput setaf 1)     # RED
+    ROOT_USER_COLOR=$(tput setaf 196)   # RED
     USER_COLOR=$(tput setaf 33)         # BLUE
     PREPOSITION_COLOR=$(tput setaf 244) # GREY
     DEVICE_COLOR=$(tput setaf 39)       # CYAN
