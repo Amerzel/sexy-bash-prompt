@@ -1,6 +1,7 @@
 # sexy-bash-prompt
 
 [Bash][bash] prompt with dashed line fill, colors, and git branches.
+[bash]: https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
 
 ![sexy-bash-prompt screenshot][screenshot]
 
